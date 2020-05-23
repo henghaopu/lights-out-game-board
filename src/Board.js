@@ -39,11 +39,14 @@ class Board extends Component {
     super(props);
 
     const { nrows, ncols, chanceLightStartsOn } = this.props;
-    // [undefined, undefined, undefined, undefined, undefined]
-
+    // [...new Array(nrows)]
+    //  = [undefined, undefined, undefined, undefined, undefined]
+    //
     // [[undefined, undefined, undefined, undefined, undefined],
-    //  [undefined, undefined, undefined, undefined, undefined],...
-    //]
+    //  [undefined, undefined, undefined, undefined, undefined],
+    //  [undefined, undefined, undefined, undefined, undefined],
+    //  [undefined, undefined, undefined, undefined, undefined],
+    //  [undefined, undefined, undefined, undefined, undefined]]
 
     // [[true, false, true, true, false],
     //  [false, false, false, true, true],...
@@ -52,9 +55,7 @@ class Board extends Component {
       hasWon: false,
       // create a board
       board: [...new Array(nrows)].map(() =>
-        [...new Array(ncols)].map(() => {
-          return Math.random() > chanceLightStartsOn ? true : false;
-        })
+        [...new Array(ncols)].map(() => Math.random() > chanceLightStartsOn)
       ),
     };
 
