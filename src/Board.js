@@ -110,21 +110,27 @@ class Board extends Component {
     if (hasWon) return `YOU WON`;
     // make table board
     return (
-      <table className='Board'>
-        <tbody>
-          {board.map((row, y) => (
-            <tr key={uuidv4()}>
-              {row.map((cell, x) => (
-                <Cell
-                  key={uuidv4()}
-                  isLit={cell}
-                  flipCellsAroundMe={() => this.flipCellsAround(`${y}-${x}`)}
-                />
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div>
+        <div className='Board-title'>
+          <div className='neon-orange'>Lights</div>
+          <div className='neon-blue'>Out</div>
+        </div>
+        <table className='Board'>
+          <tbody>
+            {board.map((row, y) => (
+              <tr key={uuidv4()}>
+                {row.map((cell, x) => (
+                  <Cell
+                    key={uuidv4()}
+                    isLit={cell}
+                    flipCellsAroundMe={() => this.flipCellsAround(`${y}-${x}`)}
+                  />
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
